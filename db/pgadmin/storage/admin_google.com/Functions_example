@@ -1,0 +1,24 @@
+CREATE OR REPLACE PROCEDURE follow_user(
+    p_follower_username VARCHAR,
+    p_followed_username VARCHAR
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Aumentar seguidores del usuario seguido
+    UPDATE usersv2 
+    SET followers = followers + 1
+    WHERE username = p_followed_username;
+
+    -- Aumentar seguidos del usuario que sigue
+    UPDATE usersv2 
+    SET following = following + 1
+    WHERE username = p_follower_username;
+END;
+$$;
+
+
+SELECT * FROM usersv2 limit 2;
+
+SELECT * FROM usersv2 WHERE username = 'string3';
+SELECT * FROM usersv2 WHERE username = 'crowd20';

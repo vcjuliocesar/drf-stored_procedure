@@ -1,0 +1,21 @@
+create or replace function get_range_of_followers(v_1 integer,v_2 integer) 
+returns table (
+	first_name varchar,
+	last_name varchar,
+	followers integer) as
+$$
+BEGIN
+	RETURN QUERY
+	select
+    	u.first_name,
+    	u.last_name,
+    	u.followers
+	from
+    	users u
+	WHERE
+    	u.followers BETWEEN v_1 AND v_2
+    ORDER BY u.followers DESC;
+END; 
+$$
+
+Language plpgsql;
