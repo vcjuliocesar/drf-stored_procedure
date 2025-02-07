@@ -1,5 +1,13 @@
 # drf-stored_procedure
 
+## Crear modelos apartir de una base de datos ya creada
+
+```shell
+    python manage.py inspectdb > models.py
+```
+Esto genera los modelos basados en la estructura de una la base de datos dentro de un archivo models.py, ese archiso se puede mover dentro de una app de django (api/models.py) por ejemplo
+
+**Nota:** Es recomendable revisar y modificar manualmente los modelos generados, ya que inspectdb puede definir algunos campos como TextField() en lugar de tipos más específicos.
 
 ## Crear funciones desde un archivo de migracion
 
